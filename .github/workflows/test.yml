@@ -20,4 +20,11 @@ jobs:
             curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
             export PATH=$HOME/.cargo/bin:$PATH
             cargo build --release
+            
+            echo "::group::Test curl_sys"
             target/release/http3 curl_sys https://google.com 20
+            echo "::endgroup::"
+            
+            echo "::group::Test curl"
+            target/release/http3 curl https://google.com 20
+            echo "::endgroup::"
