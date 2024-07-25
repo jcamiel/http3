@@ -1,0 +1,23 @@
+name: test
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test-archlinux-x64:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.7
+      - name: HTTP3 test
+        uses: addnab/docker-run-action@v3
+        with:
+          image: archlinux
+          options: --volume ${{ github.workspace }}:/work --workdir /work --privileged
+          run: |
+            pacman --noconfirm -Sy curl gcc pkgconf 
+            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+            export PATH=$HOME/.cargo/bin:$PATH
+            cargo build --release
+            target/release/http3 curl_sys https://google.com 20
