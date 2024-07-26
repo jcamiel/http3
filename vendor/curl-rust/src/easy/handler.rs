@@ -666,9 +666,9 @@ impl<H: Handler> Easy2<H> {
         self.setopt_ptr(curl_sys::CURLOPT_DEBUGDATA, ptr)
             .expect("failed to set debug callback");
 
-        // let cb: curl_sys::curl_ssl_ctx_callback = ssl_ctx_cb::<H>;
-        // self.setopt_ptr(curl_sys::CURLOPT_SSL_CTX_FUNCTION, cb as *const _).expect("CURLOPT_SSL_CTX_FUNCTION failed");
-        // self.setopt_ptr(curl_sys::CURLOPT_SSL_CTX_DATA, ptr).expect("CURLOPT_SSL_CTX_DATA failed");
+        let cb: curl_sys::curl_ssl_ctx_callback = ssl_ctx_cb::<H>;
+        self.setopt_ptr(curl_sys::CURLOPT_SSL_CTX_FUNCTION, cb as *const _).expect("CURLOPT_SSL_CTX_FUNCTION failed");
+        self.setopt_ptr(curl_sys::CURLOPT_SSL_CTX_DATA, ptr).expect("CURLOPT_SSL_CTX_DATA failed");
 
         let cb: curl_sys::curl_opensocket_callback = opensocket_cb::<H>;
         self.setopt_ptr(curl_sys::CURLOPT_OPENSOCKETFUNCTION, cb as *const _)
