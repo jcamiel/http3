@@ -626,57 +626,57 @@ impl<H: Handler> Easy2<H> {
         self.ssl_configure();
 
 
-/*
+
 
         let ptr = &*self.inner as *const _ as *const _;
-
-        let cb: extern "C" fn(*mut c_char, size_t, size_t, *mut c_void) -> size_t = header_cb::<H>;
-        self.setopt_ptr(curl_sys::CURLOPT_HEADERFUNCTION, cb as *const _)
-            .expect("failed to set header callback");
-        self.setopt_ptr(curl_sys::CURLOPT_HEADERDATA, ptr)
-            .expect("failed to set header callback");
-
-        let cb: curl_sys::curl_write_callback = write_cb::<H>;
-        self.setopt_ptr(curl_sys::CURLOPT_WRITEFUNCTION, cb as *const _)
-            .expect("failed to set write callback");
-        self.setopt_ptr(curl_sys::CURLOPT_WRITEDATA, ptr)
-            .expect("failed to set write callback");
-
-        let cb: curl_sys::curl_read_callback = read_cb::<H>;
-        self.setopt_ptr(curl_sys::CURLOPT_READFUNCTION, cb as *const _)
-            .expect("failed to set read callback");
-        self.setopt_ptr(curl_sys::CURLOPT_READDATA, ptr)
-            .expect("failed to set read callback");
-
-        let cb: curl_sys::curl_seek_callback = seek_cb::<H>;
-        self.setopt_ptr(curl_sys::CURLOPT_SEEKFUNCTION, cb as *const _)
-            .expect("failed to set seek callback");
-        self.setopt_ptr(curl_sys::CURLOPT_SEEKDATA, ptr)
-            .expect("failed to set seek callback");
-
-        let cb: curl_sys::curl_progress_callback = progress_cb::<H>;
-        self.setopt_ptr(curl_sys::CURLOPT_PROGRESSFUNCTION, cb as *const _)
-            .expect("failed to set progress callback");
-        self.setopt_ptr(curl_sys::CURLOPT_PROGRESSDATA, ptr)
-            .expect("failed to set progress callback");
-
-        let cb: curl_sys::curl_debug_callback = debug_cb::<H>;
-        self.setopt_ptr(curl_sys::CURLOPT_DEBUGFUNCTION, cb as *const _)
-            .expect("failed to set debug callback");
-        self.setopt_ptr(curl_sys::CURLOPT_DEBUGDATA, ptr)
-            .expect("failed to set debug callback");
-
+        //
+        // let cb: extern "C" fn(*mut c_char, size_t, size_t, *mut c_void) -> size_t = header_cb::<H>;
+        // self.setopt_ptr(curl_sys::CURLOPT_HEADERFUNCTION, cb as *const _)
+        //     .expect("failed to set header callback");
+        // self.setopt_ptr(curl_sys::CURLOPT_HEADERDATA, ptr)
+        //     .expect("failed to set header callback");
+        //
+        // let cb: curl_sys::curl_write_callback = write_cb::<H>;
+        // self.setopt_ptr(curl_sys::CURLOPT_WRITEFUNCTION, cb as *const _)
+        //     .expect("failed to set write callback");
+        // self.setopt_ptr(curl_sys::CURLOPT_WRITEDATA, ptr)
+        //     .expect("failed to set write callback");
+        //
+        // let cb: curl_sys::curl_read_callback = read_cb::<H>;
+        // self.setopt_ptr(curl_sys::CURLOPT_READFUNCTION, cb as *const _)
+        //     .expect("failed to set read callback");
+        // self.setopt_ptr(curl_sys::CURLOPT_READDATA, ptr)
+        //     .expect("failed to set read callback");
+        //
+        // let cb: curl_sys::curl_seek_callback = seek_cb::<H>;
+        // self.setopt_ptr(curl_sys::CURLOPT_SEEKFUNCTION, cb as *const _)
+        //     .expect("failed to set seek callback");
+        // self.setopt_ptr(curl_sys::CURLOPT_SEEKDATA, ptr)
+        //     .expect("failed to set seek callback");
+        //
+        // let cb: curl_sys::curl_progress_callback = progress_cb::<H>;
+        // self.setopt_ptr(curl_sys::CURLOPT_PROGRESSFUNCTION, cb as *const _)
+        //     .expect("failed to set progress callback");
+        // self.setopt_ptr(curl_sys::CURLOPT_PROGRESSDATA, ptr)
+        //     .expect("failed to set progress callback");
+        //
+        // let cb: curl_sys::curl_debug_callback = debug_cb::<H>;
+        // self.setopt_ptr(curl_sys::CURLOPT_DEBUGFUNCTION, cb as *const _)
+        //     .expect("failed to set debug callback");
+        // self.setopt_ptr(curl_sys::CURLOPT_DEBUGDATA, ptr)
+        //     .expect("failed to set debug callback");
+        //
         let cb: curl_sys::curl_ssl_ctx_callback = ssl_ctx_cb::<H>;
         drop(self.setopt_ptr(curl_sys::CURLOPT_SSL_CTX_FUNCTION, cb as *const _));
         drop(self.setopt_ptr(curl_sys::CURLOPT_SSL_CTX_DATA, ptr));
+        //
+        // let cb: curl_sys::curl_opensocket_callback = opensocket_cb::<H>;
+        // self.setopt_ptr(curl_sys::CURLOPT_OPENSOCKETFUNCTION, cb as *const _)
+        //     .expect("failed to set open socket callback");
+        // self.setopt_ptr(curl_sys::CURLOPT_OPENSOCKETDATA, ptr)
+        //     .expect("failed to set open socket callback");
 
-        let cb: curl_sys::curl_opensocket_callback = opensocket_cb::<H>;
-        self.setopt_ptr(curl_sys::CURLOPT_OPENSOCKETFUNCTION, cb as *const _)
-            .expect("failed to set open socket callback");
-        self.setopt_ptr(curl_sys::CURLOPT_OPENSOCKETDATA, ptr)
-            .expect("failed to set open socket callback");
-            
- */
+
     }
 
     #[cfg(need_openssl_probe)]
