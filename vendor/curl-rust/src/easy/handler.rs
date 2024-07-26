@@ -599,7 +599,7 @@ impl<H: Handler> Easy2<H> {
                     handler,
                 }),
             };
-            //ret.default_configure();
+            ret.default_configure();
             ret
         }
     }
@@ -624,6 +624,9 @@ impl<H: Handler> Easy2<H> {
         .expect("failed to set error buffer");
         let _ = self.signal(false);
         self.ssl_configure();
+
+
+/*
 
         let ptr = &*self.inner as *const _ as *const _;
 
@@ -672,6 +675,8 @@ impl<H: Handler> Easy2<H> {
             .expect("failed to set open socket callback");
         self.setopt_ptr(curl_sys::CURLOPT_OPENSOCKETDATA, ptr)
             .expect("failed to set open socket callback");
+            
+ */
     }
 
     #[cfg(need_openssl_probe)]
