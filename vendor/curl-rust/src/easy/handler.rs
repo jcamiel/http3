@@ -599,7 +599,7 @@ impl<H: Handler> Easy2<H> {
                     handler,
                 }),
             };
-            ret.default_configure();
+            //ret.default_configure();
             ret
         }
     }
