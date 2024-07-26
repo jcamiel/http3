@@ -4,5 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-curl = "0.4.46"
-curl-sys = "0.4.73"
+curl = { version = "0.4.46", path = "vendor/curl-rust" }
+curl-sys = { version = "0.4.73", path = "vendor/curl-rust/curl-sys" }
+

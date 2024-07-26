@@ -16,6 +16,8 @@ jobs:
           image: archlinux
           options: --volume ${{ github.workspace }}:/work --workdir /work --privileged
           run: |
+            set -Eeuo pipefail
+            
             pacman --noconfirm -Sy curl gcc pkgconf 
             curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
             export PATH=$HOME/.cargo/bin:$PATH
