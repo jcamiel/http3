@@ -16,6 +16,8 @@ pub fn perform_head(url: &str) -> Result<(), Error> {
     handle.verbose(true)?;
     handle.timeout(Duration::from_secs(20))?;
 
+    handle.ssl_ctx_function(|_| Ok(()))?;
+
     let transfer = handle.transfer();
     transfer.perform()?;
 
